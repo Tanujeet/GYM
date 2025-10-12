@@ -8,7 +8,7 @@ const Navbar = () => {
     { label: "Reviews", href: "reviews" },
   ];
 
-  const handleScroll = (id) => {
+  const handleScroll = (id: any) => {
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <header>
-      <nav className="border border-b-black rounded-xl p-3 bg-black text-white fixed top-0 left-0 w-full z-50">
+      <nav className="p-5 bg-black text-white fixed top-0 left-0 w-full z-50">
         <div className="flex justify-between items-center max-w-6xl mx-auto">
           <div>
             <p className="text-2xl font-bold">Fitness 24</p>
