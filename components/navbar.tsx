@@ -23,7 +23,7 @@ const Navbar = () => {
             <p className="text-2xl font-bold">Fitness 24</p>
           </div>
 
-          <div className="flex gap-6">
+          <div className="flex gap-10">
             {navlinks.map((link) => (
               <button
                 key={link.href}
