@@ -3,7 +3,7 @@ const Homepage = () => {
     <section
       className="relative h-[90vh] flex items-center bg-cover bg-center"
       style={{
-        backgroundImage: "url('/images/bg.jpg')",
+        backgroundImage: "url('/images/bg1.jpg')",
       }}
     >
       <div className="absolute inset-0 bg-black/60"></div>
