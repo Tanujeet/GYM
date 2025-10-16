@@ -1,6 +1,7 @@
 import Homepage from "@/components/Homepage";
 import Navbar from "@/components/navbar";
 import Secondpage from "@/components/secondpage";
+import Thirdpage from "@/components/thirdpage";
 
 const Page = () => {
   return (
@@ -8,6 +9,7 @@ const Page = () => {
       <Navbar />
       <Homepage />
       <Secondpage />
+      <Thirdpage />
     </main>
   );
 };
