@@ -40,7 +40,7 @@ const Secondpage = () => {
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-extrabold sm:text-4xl lg:text-5xl tracking-tight">
-            We Offer Something For{" "}
+            We Offer Something For {}
             <span className="text-amber-400">Everybody</span>
           </h2>
           <p className="mt-4 text-lg text-slate-400">
@@ -58,18 +58,13 @@ const Secondpage = () => {
             >
               <CardHeader className="items-center pt-8">
                 <div className="bg-slate-900 p-4 rounded-full">{item.icon}</div>
-                <CardTitle className="mt-4 text-xl font-bold">
+                <CardTitle className="mt-4 text-xl font-bold text-white">
                   {item.title}
                 </CardTitle>
               </CardHeader>
               <CardContent className="flex-grow px-6 pb-4">
                 <p className="text-slate-400">{item.description}</p>
               </CardContent>
-              <CardFooter className="justify-center pb-8 pt-4">
-                <button className="bg-amber-400 text-slate-900 font-bold py-2 px-6 rounded-lg hover:bg-amber-300 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-slate-900">
-                  Learn More
-                </button>
-              </CardFooter>
             </Card>
           ))}
         </div>
