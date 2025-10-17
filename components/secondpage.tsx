@@ -31,7 +31,6 @@ const Secondpage = () => {
   return (
     <section className="bg-slate-900 text-white antialiased">
       <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-        {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-extrabold sm:text-4xl lg:text-5xl tracking-tight">
             We Offer Something For{" "}
@@ -43,7 +42,6 @@ const Secondpage = () => {
           </p>
         </div>
 
-        {/* Services Grid */}
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((item, idx) => (
             <Card
