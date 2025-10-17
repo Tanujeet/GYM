@@ -1,6 +1,6 @@
 const Thirdpage = () => {
   return (
-    <section>Thirdpage</section>
+    <section className="bg-slate-900 text-white antialiased">Thirdpage</section>
   );
 };
 
