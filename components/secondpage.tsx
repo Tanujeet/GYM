@@ -50,7 +50,7 @@ const Secondpage = () => {
             >
               <CardHeader className="flex flex-col items-center pt-8">
                 <div className="bg-slate-900 p-4 rounded-full">{item.icon}</div>
-                <CardTitle className="mt-4 text-xl font-bold">
+                <CardTitle className="mt-4 text-xl font-bold text-white">
                   {item.title}
                 </CardTitle>
               </CardHeader>
