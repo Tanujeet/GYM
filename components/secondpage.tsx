@@ -34,7 +34,7 @@ const Secondpage = () => {
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-extrabold sm:text-4xl lg:text-5xl tracking-tight">
-            We Offer Something For {}
+            We Offer Something For{" "}
             <span className="text-amber-400">Everybody</span>
           </h2>
           <p className="mt-4 text-lg text-slate-400">
@@ -50,9 +50,9 @@ const Secondpage = () => {
               key={idx}
               className="bg-slate-800/50 border border-slate-700 rounded-xl text-center flex flex-col transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/10"
             >
-              <CardHeader className="items-center pt-8">
+              <CardHeader className="flex flex-col items-center pt-8">
                 <div className="bg-slate-900 p-4 rounded-full">{item.icon}</div>
-                <CardTitle className="mt-4 text-xl font-bold text-white">
+                <CardTitle className="mt-4 text-xl font-bold">
                   {item.title}
                 </CardTitle>
               </CardHeader>
