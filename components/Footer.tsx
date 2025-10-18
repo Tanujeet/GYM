@@ -126,7 +126,8 @@ const Footer: React.FC = () => {
 
         <div className="mt-10 pt-8 border-t border-slate-700/50 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
           <p className="text-slate-400 text-sm">
-            &copy; {new Date().getFullYear()} FitFlex Gym. All Rights Reserved.
+            &copy; {new Date().getFullYear()} Fitness24 Gym. All Rights
+            Reserved.
           </p>
           <button
             onClick={() => handleScroll("home")}
