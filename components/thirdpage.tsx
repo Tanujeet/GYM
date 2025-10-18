@@ -25,9 +25,8 @@ const Thirdpage = () => {
   ];
 
   return (
-    <section className="bg-slate-900 text-white antialiased">
+    <section id="team" className="bg-slate-900 text-white antialiased">
       <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-        {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-extrabold sm:text-4xl lg:text-5xl tracking-tight">
             Meet Our <span className="text-amber-400">Expert Trainers</span>
@@ -38,7 +37,6 @@ const Thirdpage = () => {
           </p>
         </div>
 
-        {/* Trainers List with Alternating Layout */}
         <div className="mt-16 space-y-16">
           {trainers.map((trainer, idx) => (
             <div
@@ -47,7 +45,6 @@ const Thirdpage = () => {
                 idx % 2 !== 0 ? "lg:flex-row-reverse" : ""
               }`}
             >
-              {/* Image */}
               <div className="lg:w-5/12 flex-shrink-0">
                 <img
                   src={trainer.image}
@@ -56,7 +53,6 @@ const Thirdpage = () => {
                 />
               </div>
 
-              {/* Details */}
               <div className="lg:w-7/12">
                 <p className="text-md font-semibold text-amber-400 tracking-wider">
                   {trainer.specialty}

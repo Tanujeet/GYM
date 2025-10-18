@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// --- Star Icon Component ---
+
 const StarIcon = ({ className = "" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,6 @@ const StarIcon = ({ className = "" }) => (
   </svg>
 );
 
-// --- Sample Reviews Data ---
 const reviews = [
   {
     image: "https://placehold.co/100x100/fde047/1e293b?text=SD",
@@ -61,10 +60,13 @@ const reviews = [
 ];
 
 const ReviewsSection = () => {
-  const duplicatedReviews = [...reviews, ...reviews]; // Duplicate for infinite scroll effect
+  const duplicatedReviews = [...reviews, ...reviews];
 
   return (
-    <section className="bg-slate-900 text-white antialiased py-16 lg:py-24 overflow-hidden">
+    <section
+      id="reviews"
+      className="bg-slate-900 text-white antialiased py-16 lg:py-24 overflow-hidden"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto mb-12">
@@ -78,19 +80,18 @@ const ReviewsSection = () => {
         </div>
       </div>
 
-      {/* Horizontal Scroll Track */}
       <motion.div
         className="flex space-x-8 px-4 md:px-8 lg:px-12 xl:px-16" // Added padding for left/right view
         style={{
           width: `calc(350px * ${duplicatedReviews.length} + 32px * ${
             duplicatedReviews.length - 1
           })`,
-        }} // Approximate width calculation
+        }}
         animate={{
-          x: ["0%", "-100%"], // Move from 0% to -100% to create loop
+          x: ["0%", "-100%"],
           transition: {
             x: {
-              duration: 60, // Slower speed for more reviews
+              duration: 60,
               ease: "linear",
               repeat: Infinity,
             },
@@ -101,8 +102,8 @@ const ReviewsSection = () => {
           <motion.div
             key={idx}
             className="flex-shrink-0 w-[300px] md:w-[350px] bg-slate-800 rounded-xl p-6 shadow-xl border border-slate-700 hover:border-amber-400 transition-colors duration-300 transform hover:scale-105"
-            whileHover={{ y: -8 }} // Lift slightly on hover
-            style={{ minWidth: "300px" }} // Ensure min-width for responsive cards
+            whileHover={{ y: -8 }}
+            style={{ minWidth: "300px" }}
           >
             <div className="flex flex-col h-full">
               <div className="flex space-x-1 text-amber-400 mb-4">

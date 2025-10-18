@@ -29,7 +29,7 @@ const services = [
 
 const Secondpage = () => {
   return (
-    <section className="bg-slate-900 text-white antialiased">
+    <section id="services" className="bg-slate-900 text-white antialiased">
       <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-extrabold sm:text-4xl lg:text-5xl tracking-tight">
