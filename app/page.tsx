@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Homepage from "@/components/Homepage";
 import Navbar from "@/components/navbar";
 import ReviewPage from "@/components/ReviewPage";
@@ -12,6 +13,7 @@ const Page = () => {
       <Secondpage />
       <Thirdpage />
       <ReviewPage />
+      <Footer />
     </main>
   );
 };
