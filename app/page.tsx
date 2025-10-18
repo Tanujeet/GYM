@@ -1,5 +1,6 @@
 import Homepage from "@/components/Homepage";
 import Navbar from "@/components/navbar";
+import ReviewPage from "@/components/ReviewPage";
 import Secondpage from "@/components/secondpage";
 import Thirdpage from "@/components/thirdpage";
 
@@ -10,6 +11,7 @@ const Page = () => {
       <Homepage />
       <Secondpage />
       <Thirdpage />
+      <ReviewPage />
     </main>
   );
 };
