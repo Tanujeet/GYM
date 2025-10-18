@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-
+import Image from "next/image";
 
 const StarIcon = ({ className = "" }) => (
   <svg
@@ -115,7 +115,7 @@ const ReviewsSection = () => {
                 &quot;{item.review}&quot;
               </p>
               <div className="flex items-center mt-6 pt-4 border-t border-slate-700">
-                <img
+                <Image
                   src={item.image}
                   alt={`Avatar of ${item.name}`}
                   className="w-12 h-12 rounded-full border-2 border-amber-400 object-cover"

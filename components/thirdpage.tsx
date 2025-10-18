@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Phone } from "lucide-react";
 const Thirdpage = () => {
   const trainers = [
@@ -46,7 +47,7 @@ const Thirdpage = () => {
               }`}
             >
               <div className="lg:w-5/12 flex-shrink-0">
-                <img
+                <Image
                   src={trainer.image}
                   alt={`Portrait of ${trainer.name}`}
                   className="w-full h-auto object-cover rounded-lg shadow-2xl shadow-slate-900/70"
