@@ -112,7 +112,7 @@ const ReviewsSection = () => {
                 ))}
               </div>
               <p className="text-slate-300 text-base flex-grow leading-relaxed">
-                "{item.review}"
+                &quot;{item.review}&quot;
               </p>
               <div className="flex items-center mt-6 pt-4 border-t border-slate-700">
                 <img
