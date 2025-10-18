@@ -1,4 +1,4 @@
-import { Instagram, Phone } from "lucide-react";
+import { Phone } from "lucide-react";
 const Thirdpage = () => {
   const trainers = [
     {
@@ -7,9 +7,6 @@ const Thirdpage = () => {
       specialty: "Strength & Conditioning",
       bio: "With over 10 years of experience, Alex specializes in helping clients build functional strength and achieve peak physical performance.",
       phone: "123-456-7890",
-      social: {
-        instagram: "#",
-      },
     },
     {
       image: "https://placehold.co/600x400/1e293b/facc15?text=Jess",
@@ -17,9 +14,6 @@ const Thirdpage = () => {
       specialty: "Yoga & Flexibility",
       bio: "Jess is a certified yoga instructor who believes in the power of mind-body connection for a healthier, more balanced life.",
       phone: "123-456-7890",
-      social: {
-        instagram: "#",
-      },
     },
     {
       image: "https://placehold.co/600x400/1e293b/facc15?text=Mike",
@@ -27,9 +21,6 @@ const Thirdpage = () => {
       specialty: "HIIT & Cardio",
       bio: "Mike's high-energy classes are designed to push your limits, burn calories, and improve your cardiovascular health.",
       phone: "123-456-7890",
-      social: {
-        instagram: "#",
-      },
     },
   ];
 
@@ -76,13 +67,6 @@ const Thirdpage = () => {
                 <p className="text-slate-400 mt-4 text-lg">{trainer.bio}</p>
 
                 <div className="flex flex-col sm:flex-row sm:items-center justify-center lg:justify-start gap-x-6 gap-y-4 mt-6">
-                  <a
-                    href={trainer.social.instagram}
-                    className="text-slate-400 hover:text-amber-400 transition-colors flex items-center justify-center lg:justify-start space-x-2"
-                  >
-                    <Instagram className="w-7 h-7" />
-                    <span>Instagram</span>
-                  </a>
                   <a
                     href={`tel:${trainer.phone}`}
                     className="flex items-center justify-center lg:justify-start gap-2 text-slate-400 hover:text-amber-400 transition-colors"
