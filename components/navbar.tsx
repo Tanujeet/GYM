@@ -107,7 +107,7 @@ const Navbar: React.FC = () => {
             <a
               href="#home"
               onClick={() => handleScroll("home")}
-              className="text-2xl font-bold text-white tracking-wider"
+              className="text-4xl font-bold text-white tracking-wider"
             >
               Fitness<span className="text-amber-400">24</span>
             </a>
