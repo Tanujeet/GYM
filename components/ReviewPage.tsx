@@ -116,6 +116,8 @@ const ReviewsSection = () => {
               </p>
               <div className="flex items-center mt-6 pt-4 border-t border-slate-700">
                 <Image
+                  width={48}
+                  height={48}
                   src={item.image}
                   alt={`Avatar of ${item.name}`}
                   className="w-12 h-12 rounded-full border-2 border-amber-400 object-cover"
