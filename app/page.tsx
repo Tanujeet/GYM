@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer";
+import FourthPage from "@/components/FourthPage";
 import Homepage from "@/components/Homepage";
 import Navbar from "@/components/navbar";
 import ReviewPage from "@/components/ReviewPage";
@@ -12,6 +13,7 @@ const Page = () => {
       <Homepage />
       <Secondpage />
       <Thirdpage />
+      <FourthPage />
       <ReviewPage />
       <Footer />
     </main>
