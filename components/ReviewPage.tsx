@@ -121,6 +121,7 @@ const ReviewsSection = () => {
                   src={item.image}
                   alt={`Avatar of ${item.name}`}
                   className="w-12 h-12 rounded-full border-2 border-amber-400 object-cover"
+                  unoptimized={true}
                 />
                 <div className="ml-4">
                   <h4 className="font-bold text-white text-lg">{item.name}</h4>

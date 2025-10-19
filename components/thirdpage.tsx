@@ -53,6 +53,7 @@ const Thirdpage = () => {
                   src={trainer.image}
                   alt={`Portrait of ${trainer.name}`}
                   className="w-full h-auto object-cover rounded-lg shadow-2xl shadow-slate-900/70"
+                  unoptimized={true}
                 />
               </div>
 
