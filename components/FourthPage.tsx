@@ -1,8 +1,8 @@
-"use client";
+"use client"; // <-- FIX 1: Add this
 
-import { AnimatedPhotoShowcase } from "./AnimatedPhotoShowcase"; // Make sure this path is correct
+import { AnimatedPhotoShowcase } from "./AnimatedPhotoShowcase"; // Make sure path is correct
 
-// 1. Define your images (you need this for the component)
+// FIX 2: Define the gymPhotos array here!
 const gymPhotos = [
   {
     src: "https://placehold.co/600x400/1e293b/facc15?text=Gym+Floor",
@@ -24,15 +24,13 @@ const gymPhotos = [
 
 export default function MyPage() {
   return (
-    // Your section is set to text-center, which is great for mobile
     <section className="bg-gray-900 text-white text-center">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* --- COLUMN 1: YOUR PHOTO SHOWCASE --- */}
+          {/* This will now work because gymPhotos is defined */}
           <AnimatedPhotoShowcase images={gymPhotos} />
 
-          {/* --- COLUMN 2: NEW TEXT CONTENT --- */}
-          {/* On large screens, we align text left for a classic layout */}
+          {/* This is the text column to fill the other grid slot */}
           <div className="flex flex-col justify-center text-center lg:text-left">
             <h2 className="text-3xl font-extrabold sm:text-4xl lg:text-5xl tracking-tight">
               A Glimpse Into{" "}
@@ -40,9 +38,8 @@ export default function MyPage() {
             </h2>
             <p className="mt-6 text-lg text-gray-300">
               Our gym is more than just equipment. It's a high-energy
-              environment built to motivate. From our spacious free-weight area
-              to dedicated cardio and functional training zones, see the place
-              where you'll build your legacy.
+              environment built to motivate. See the place where you'll build
+              your legacy.
             </p>
             <div className="mt-8">
               <a

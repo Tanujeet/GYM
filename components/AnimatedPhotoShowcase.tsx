@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
+import Image from "next/image"; // <-- FIX 1: Import next/image
 
 // A simpler type for just images
 type ImageProp = {
@@ -74,19 +75,20 @@ export const AnimatedPhotoShowcase = ({
               }}
               className="absolute inset-0 origin-bottom"
             >
-              <img
+              {/* FIX 2: Swapped <img> for next/image <Image> */}
+              <Image
                 src={image.src}
                 alt={image.alt}
                 width={500}
                 height={500}
                 draggable={false}
                 className="h-full w-full rounded-3xl object-cover object-center"
+                unoptimized={true} // <-- FIX 3: Added for placehold.co SVGs
               />
             </motion.div>
           ))}
         </AnimatePresence>
       </div>
-      {/* The entire 2nd column for text and buttons has been removed. */}
     </div>
   );
 };
