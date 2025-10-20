@@ -1,57 +1,138 @@
-"use client"; // <-- FIX 1: Add this
+"use client";
 
-import { AnimatedPhotoShowcase } from "./AnimatedPhotoShowcase"; // Make sure path is correct
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-// FIX 2: Define the gymPhotos array here!
-const gymPhotos = [
+import { MapPin, ArrowRight } from "lucide-react";
+import Image from "next/image";
+
+type ImageProp = {
+  src: string;
+  alt: string;
+};
+
+const gymPhotos: ImageProp[] = [
   {
-    src: "https://placehold.co/600x400/1e293b/facc15?text=Gym+Floor",
-    alt: "Photo of the main gym floor",
+    src: "https://placehold.co/800x600/111827/facc15?text=Main+Floor",
+    alt: "Spacious main floor with modern equipment",
   },
   {
-    src: "https://placehold.co/600x400/facc15/1e293b?text=Weights",
-    alt: "Photo of the weightlifting area",
+    src: "https://placehold.co/800x600/111827/facc15?text=Cardio+Zone",
+    alt: "Dedicated cardio zone with treadmills and bikes",
   },
   {
-    src: "https://placehold.co/600x400/1e293b/facc15?text=Cardio",
-    alt: "Photo of the cardio equipment",
+    src: "https://placehold.co/800x600/111827/facc15?text=Weight+Area",
+    alt: "Free weights and strength training area",
   },
   {
-    src: "https://placehold.co/600x400/facc15/1e293b?text=Yoga+Class",
-    alt: "Photo of a yoga class in session",
+    src: "https://placehold.co/800x600/111827/facc15?text=Yoga+Studio",
+    alt: "Calm and serene yoga and stretching studio",
   },
 ];
 
-export default function MyPage() {
-  return (
-    <section className="bg-gray-900 text-white text-center">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* This will now work because gymPhotos is defined */}
-          <AnimatedPhotoShowcase images={gymPhotos} />
+const gymLocation = {
+  name: "Fitness24 Gym",
+  address: "Gomti Nagar, Lucknow, Uttar Pradesh",
 
-          {/* This is the text column to fill the other grid slot */}
-          <div className="flex flex-col justify-center text-center lg:text-left">
-            <h2 className="text-3xl font-extrabold sm:text-4xl lg:text-5xl tracking-tight">
-              A Glimpse Into{" "}
-              <span className="text-yellow-400">Our Facility</span>
-            </h2>
-            <p className="mt-6 text-lg text-gray-300">
-              Our gym is more than just equipment. It's a high-energy
-              environment built to motivate. See the place where you'll build
-              your legacy.
-            </p>
-            <div className="mt-8">
-              <a
-                href="#join"
-                className="inline-block bg-yellow-500 text-black font-bold py-3 px-8 rounded-lg text-lg uppercase hover:bg-yellow-400 transition duration-300"
-              >
-                Join The Family
-              </a>
-            </div>
+  query: "Fitness24%20Gym%20Gomti%20Nagar%20Lucknow",
+};
+
+const ImageCarousel = ({ images }: { images: ImageProp[] }) => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  return (
+    <div className="relative w-full h-96 md:h-[600px] overflow-hidden rounded-2xl shadow-2xl">
+      <AnimatePresence initial={false}>
+        <motion.div
+          key={index}
+          className="absolute h-full w-full"
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 1.05 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+        >
+          <Image
+            width={42}
+            height={42}
+            src={images[index].src}
+            alt={images[index].alt}
+            className="w-full h-full object-cover"
+            unoptimized
+          />
+        </motion.div>
+      </AnimatePresence>
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2">
+        {images.map((_, i) => (
+          <div
+            key={i}
+            className={`h-2 w-2 rounded-full transition-all duration-300 ${
+              i === index ? "bg-amber-400 scale-125" : "bg-white/50"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const LocationMap = () => {
+  const mapEmbedUrl = `https://maps.google.com/maps?q=${gymLocation.query}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${gymLocation.query}`;
+
+  return (
+    <div className="flex flex-col h-full">
+      <h2 className="text-3xl md:text-4xl font-extrabold text-amber-400">
+        Visit Us
+      </h2>
+      <div className="flex items-center mt-4 text-slate-300">
+        <MapPin className="w-5 h-5 mr-3 text-amber-400 flex-shrink-0" />
+        <p>{gymLocation.address}</p>
+      </div>
+      <div className="relative mt-6 flex-grow w-full min-h-[300px] md:min-h-[450px] rounded-2xl overflow-hidden shadow-2xl group">
+        <a
+          href={directionsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer"
+          aria-label={`Get directions to ${gymLocation.name}`}
+        >
+          <p className="text-xl font-bold text-white">Get Directions</p>
+          <ArrowRight className="w-8 h-8 mt-2 text-amber-400" />
+        </a>
+        <iframe
+          className="absolute top-0 left-0 w-full h-full border-0"
+          loading="lazy"
+          allowFullScreen
+          src={mapEmbedUrl}
+          title={`Map of ${gymLocation.name}`}
+        ></iframe>
+      </div>
+    </div>
+  );
+};
+
+export default function FindUsPage() {
+  return (
+    <main className="bg-slate-900 min-h-screen text-white antialiased">
+      <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="w-full">
+            <ImageCarousel images={gymPhotos} />
+          </div>
+
+          <div className="w-full">
+            <LocationMap />
           </div>
         </div>
       </div>
-    </section>
+    </main>
   );
 }

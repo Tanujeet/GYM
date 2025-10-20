@@ -2,9 +2,8 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { useEffect, useState } from "react";
-import Image from "next/image"; // <-- FIX 1: Import next/image
+import Image from "next/image";
 
-// A simpler type for just images
 type ImageProp = {
   src: string;
   alt: string;
@@ -12,12 +11,20 @@ type ImageProp = {
 
 export const AnimatedPhotoShowcase = ({
   images,
-  autoplay = true, // Defaulting to true, as it's a "showcase"
+  autoplay = true,
 }: {
   images: ImageProp[];
   autoplay?: boolean;
 }) => {
   const [active, setActive] = useState(0);
+
+  // <-- FIX 1: Add state to check if we are on the client
+  const [isClient, setIsClient] = useState(false);
+
+  // <-- FIX 2: When component mounts, set isClient to true
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const handleNext = () => {
     setActive((prev) => (prev + 1) % images.length);
@@ -28,12 +35,11 @@ export const AnimatedPhotoShowcase = ({
   };
 
   useEffect(() => {
-    if (autoplay) {
-      // Autoplay interval
-      const interval = setInterval(handleNext, 5000); // 5-second interval
+    // Make sure autoplay only runs if there are images
+    if (autoplay && images.length > 0) {
+      const interval = setInterval(handleNext, 5000);
       return () => clearInterval(interval);
     }
-    // Added images.length to dependency array
   }, [autoplay, images.length]);
 
   const randomRotateY = () => {
@@ -41,53 +47,53 @@ export const AnimatedPhotoShowcase = ({
   };
 
   return (
-    // Updated container to be centered and responsive
     <div className="mx-auto max-w-lg px-4 py-20 font-sans antialiased md:px-8 lg:px-12">
-      {/* This is the container from the *left* column of your original code */}
       <div className="relative h-80 w-full sm:h-96">
-        <AnimatePresence>
-          {images.map((image, index) => (
-            <motion.div
-              key={image.src}
-              initial={{
-                opacity: 0,
-                scale: 0.9,
-                z: -100,
-                rotate: randomRotateY(),
-              }}
-              animate={{
-                opacity: isActive(index) ? 1 : 0.7,
-                scale: isActive(index) ? 1 : 0.95,
-                z: isActive(index) ? 0 : -100,
-                rotate: isActive(index) ? 0 : randomRotateY(),
-                zIndex: isActive(index) ? 40 : images.length + 2 - index,
-                y: isActive(index) ? [0, -80, 0] : 0,
-              }}
-              exit={{
-                opacity: 0,
-                scale: 0.9,
-                z: 100,
-                rotate: randomRotateY(),
-              }}
-              transition={{
-                duration: 0.4,
-                ease: "easeInOut",
-              }}
-              className="absolute inset-0 origin-bottom"
-            >
-              {/* FIX 2: Swapped <img> for next/image <Image> */}
-              <Image
-                src={image.src}
-                alt={image.alt}
-                width={500}
-                height={500}
-                draggable={false}
-                className="h-full w-full rounded-3xl object-cover object-center"
-                unoptimized={true} // <-- FIX 3: Added for placehold.co SVGs
-              />
-            </motion.div>
-          ))}
-        </AnimatePresence>
+        {/* <-- FIX 3: Only render AnimatePresence on the client --> */}
+        {isClient && (
+          <AnimatePresence>
+            {images.map((image, index) => (
+              <motion.div
+                key={image.src}
+                initial={{
+                  opacity: 0,
+                  scale: 0.9,
+                  z: -100,
+                  rotate: randomRotateY(), // Now safe to use here
+                }}
+                animate={{
+                  opacity: isActive(index) ? 1 : 0.7,
+                  scale: isActive(index) ? 1 : 0.95,
+                  z: isActive(index) ? 0 : -100,
+                  rotate: isActive(index) ? 0 : randomRotateY(),
+                  zIndex: isActive(index) ? 40 : images.length + 2 - index,
+                  y: isActive(index) ? [0, -80, 0] : 0,
+                }}
+                exit={{
+                  opacity: 0,
+                  scale: 0.9,
+                  z: 100,
+                  rotate: randomRotateY(),
+                }}
+                transition={{
+                  duration: 0.4,
+                  ease: "easeInOut",
+                }}
+                className="absolute inset-0 origin-bottom"
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={500}
+                  height={500}
+                  draggable={false}
+                  className="h-full w-full rounded-3xl object-cover object-center"
+                  unoptimized={true}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        )}
       </div>
     </div>
   );
