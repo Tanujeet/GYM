@@ -121,8 +121,14 @@ const LocationMap = () => {
 
 export default function FindUsPage() {
   return (
-    <main className="bg-slate-900 min-h-screen text-white antialiased">
+    <main
+      className="bg-slate-900 min-h-screen text-white antialiased"
+      id="gallery"
+    >
       <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-center text-white mb-12">
+          Something About <span className=" text-amber-400 mb-12">Us</span>
+        </h1>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="w-full">
             <ImageCarousel images={gymPhotos} />
