@@ -1,3 +1,5 @@
+import { output } from "motion/react-client";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -10,6 +12,7 @@ const nextConfig = {
       },
     ],
   },
+  output:"export",
 };
 
 export default nextConfig;
