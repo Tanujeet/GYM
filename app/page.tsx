@@ -16,7 +16,6 @@ const Page = () => {
       <FourthPage />
       <ReviewPage />
       <Footer />
-      heelo
     </main>
   );
 };
